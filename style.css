@@ -1,0 +1,597 @@
+:root {
+    /* Cores da epoca (à paleta de cores dos anos 80) */
+  --cor-papel:       #f5ead6;   /* bege claro — fundo principal */
+  --cor-sepia:       #c8a96e;   /* sépia médio — bordas e detalhes */
+  --cor-marrom:      #6b4c2a;   /* marrom escuro — textos e títulos */
+  --cor-marrom-claro:#a07040;   /* marrom médio — subtítulos */
+  --cor-escuro:      #3a2a1a;   /* quase preto vintage — texto corrido */
+  --cor-destaque:    #8b1a1a;   /* vinho/vermelho antigo — destaques */
+  --cor-dourado:     #b8860b;   /* dourado — detalhes decorativos */
+  --cor-fundo-escuro:#2c1f0e;   /* marrom muito escuro — seção escura */
+  --cor-card-bg:     #fdf3e0;   /* amarelo clarinho — fundo dos cards */
+  --cor-borda-card:  #d4aa70;   /* dourado suave — borda dos cards */
+
+  /* Fontes das revista antiga */
+  --fonte-titulo:    'Georgia', 'Times New Roman', serif;  /* para títulos grandes */
+  --fonte-corpo:     'Palatino Linotype', 'Palatino', Georgia, serif; /* para textos */
+  --fonte-decorativa:'Courier New', Courier, monospace;   /* para detalhes vintage */
+
+  /* Espaçamentos padrão */
+  --espacamento-sm:  0.75rem;
+  --espacamento-md:  1.5rem;
+  --espacamento-lg:  3rem;
+
+  /* Sombra suave nos cards */
+  --sombra-card: 3px 4px 12px rgba(107, 76, 42, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Nao deixa o conteudo explodr/passar alem do que esperado */
+}
+
+/* Configuração base do body */
+body {
+  background-color: var(--cor-papel);
+  color: var(--cor-escuro);
+  font-family: var(--fonte-corpo);
+  font-size: 3rem;
+  line-height: 1.7;
+}
+
+/* Links sem decoração padrão */
+a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+}
+
+
+/* CLASSES REUTILIZADAS DA AV1 */
+
+/* Classe reutilizada da AV1 para o container principal */
+.sc_junior_container {
+  width: 100%;
+  max-width: 1100px;   /* largura máxima do conteúdo */
+  margin: 0 auto;      /* centraliza horizontalmente */
+  padding: 0 var(--espacamento-md); 
+}
+
+/* Classe reutilizada da AV1 para os cards do projeto */
+.sc_junior_card {
+  background-color: var(--cor-card-bg);
+  border: 2px solid var(--cor-borda-card);
+  border-radius: 4px;
+  padding: var(--espacamento-md);
+  box-shadow: var(--sombra-card);
+
+  /* hover */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* hover */
+.sc_junior_card:hover {
+  transform: translateY(-4px);           /* sobe levemente */
+  box-shadow: 5px 8px 20px rgba(107, 76, 42, 0.35); /* sombra mais intensa */
+}
+
+/* Classe reutilizada da AV1 — usada como etiqueta/badge decorativo nos cards */
+.sc_junior_btn_transformar {
+  display: inline-block;
+  border: 1.5px solid var(--cor-destaque);
+  color: var(--cor-destaque);
+  font-family: var(--fonte-decorativa);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+
+/* HEADER — Cabeçalho principal */
+.header-principal {
+  background-color: var(--cor-fundo-escuro);
+  padding: var(--espacamento-lg) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Borda decorativa inferior dupla */
+  border-bottom: 6px double var(--cor-sepia);
+}
+
+
+/* Selo "1986" decorativo no canto */
+.header-selo {
+  position: absolute;
+  top: -10px;
+  right: var(--espacamento-md);
+  background-color: var(--cor-destaque);
+  color: #f5ead6;
+  font-family: var(--fonte-decorativa);
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 2px solid var(--cor-sepia);
+  transform: rotate(3deg); /* levemente inclinado — charme vintage */
+}
+
+/* Título principal */
+.header-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.8rem, 5vw, 3.2rem); /* tamanho responsivo com clamp() */
+  color: var(--cor-sepia);
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.4rem;
+}
+
+/* Subtítulo */
+.header-subtitulo {
+  font-family: var(--fonte-decorativa);
+  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+  color: var(--cor-dourado);
+  letter-spacing: 0.2em;
+  margin-bottom: var(--espacamento-sm);
+}
+
+/* Nome do desenvolvedor */
+.header-desenvolvedor {
+  font-family: var(--fonte-corpo);
+  font-size: 0.95rem;
+  color: #c8a96e;
+  margin-bottom: var(--espacamento-md);
+}
+
+.header-desenvolvedor strong {
+  color: var(--cor-sepia);
+  font-size: 1.1rem;
+}
+
+/* Linha decorativa horizontal do header */
+.linha-decorativa {
+  border: none;
+  border-top: 2px solid var(--cor-sepia);
+  width: 60%;
+  margin: 0 auto var(--espacamento-md);
+  opacity: 0.5;
+}
+
+/* Descrição no rodapé do header */
+.header-descricao {
+  font-size: 0.95rem;
+  color: #a89070;
+  max-width: 650px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+
+/* SEÇÕES — Estrutura comum das seções */
+.secao {
+  padding: var(--espacamento-lg) 0;
+}
+
+/* Seção com fundo escuro */
+.secao-escura {
+  background-color: var(--cor-fundo-escuro);
+}
+
+/* Título das seções — estilo manchete de almanaque */
+.secao-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  color: var(--cor-marrom);
+  text-align: center;
+  margin-bottom: var(--espacamento-md);
+  letter-spacing: 0.08em;
+
+  /* Linha decorativa antes e depois do título */
+  display: flex;
+  align-items: center;
+  gap: var(--espacamento-sm);
+}
+
+
+
+/* Versão clara do título (para seção escura) */
+.secao-titulo-claro {
+  color: var(--cor-sepia);
+}
+
+.secao-titulo-claro::before,
+.secao-titulo-claro::after {
+  background: linear-gradient(to right, transparent, var(--cor-dourado), transparent);
+}
+
+/* Subtítulo de seção */
+.secao-subtitulo {
+  text-align: center;
+  font-style: italic;
+  color: var(--cor-marrom-claro);
+  margin-top: -0.75rem;
+  margin-bottom: var(--espacamento-lg);
+  font-size: 0.9rem;
+}
+
+
+/* CARD SOBRE — Seção "O que era o Almanaque"
+   Usa Flexbox para layout de duas colunas */
+.card-sobre {
+  /* Flexbox: itens lado a lado */
+  display: flex;
+  gap: var(--espacamento-lg);
+  align-items: flex-start;
+}
+
+.card-sobre-texto {
+  flex: 2; /* ocupa 2 partes do espaço disponível */
+}
+
+.card-sobre-texto h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  color: var(--cor-destaque);
+  margin-top: var(--espacamento-md);
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid var(--cor-borda-card);
+  padding-bottom: 4px;
+}
+
+.card-sobre-texto h3:first-child {
+  margin-top: 0;
+}
+
+.card-sobre-texto p {
+  font-size: 0.95rem;
+  color: var(--cor-escuro);
+}
+
+/* Imagem ilustrativa lateral */
+.card-sobre-imagem {
+  flex: 1; /* ocupa 1 parte do espaço */
+  display: flex;
+  justify-content: center;
+}
+
+.ilustracao-retro {
+  border: 3px double var(--cor-sepia);
+  padding: var(--espacamento-md);
+  text-align: center;
+  background-color: #fffaf0;
+  min-width: 140px;
+}
+
+.ilustracao-icone {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.ilustracao-legenda {
+  font-family: var(--fonte-decorativa);
+  font-size: 0.7rem;
+  color: var(--cor-marrom-claro);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+/* GRID DE CARDS DO ALMANAQUE */
+.almanaque-grid {
+  display: grid;
+  /* repeat(auto-fit): cria colunas automaticamente */
+  /* minmax(300px, 1fr): mínimo 300px, máximo igual */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--espacamento-md);
+}
+
+/* Estilo dos cards do almanaque */
+.card-almanaque {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Etiqueta no topo do card (ex: "Astronomia", "Saúde") */
+.card-tag {
+  position: absolute;
+  top: -12px;
+  left: var(--espacamento-sm);
+  background-color: var(--cor-destaque);
+  color: #f5ead6;
+  font-family: var(--fonte-decorativa);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+}
+
+/* Ícone grande do card */
+.card-icone {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Título do card */
+.card-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+  color: var(--cor-marrom);
+  text-align: center;
+  border-bottom: 1px dashed var(--cor-borda-card);
+  padding-bottom: 0.5rem;
+}
+
+/* Texto do card */
+.card-texto {
+  font-size: 0.9rem;
+  color: var(--cor-escuro);
+  flex: 1; /* empurra o rodapé para baixo */
+}
+
+/* Rodapé do card com o badge */
+.card-rodape {
+  text-align: right;
+  margin-top: auto;
+}
+
+/* Lista de remédios vintage */
+.lista-remedios {
+  list-style: none;
+  font-size: 0.88rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lista-remedios li {
+  border-left: 3px solid var(--cor-sepia);
+  padding-left: 0.5rem;
+}
+
+/* Lista de curiosidades */
+.lista-curiosidades {
+  list-style: none;
+  font-size: 0.88rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Card do horóscopo — ocupa espaço diferente no grid */
+.card-horoscopo {
+  grid-column: span 3; /* ocupa 3 colunas quando há espaço */
+}
+
+/* Grid de signos dentro do card do horóscopo */
+.signos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.signo-item {
+  background-color: var(--cor-papel);
+  border: 1px solid var(--cor-borda-card);
+  border-radius: 3px;
+  padding: 4px 6px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--cor-marrom);
+  transition: background-color 0.2s;
+}
+
+.signo-item:hover {
+  background-color: var(--cor-sepia);
+  color: white;
+}
+
+/* Área de previsão do horóscopo (preenchida pelo JS) */
+.previsao-texto {
+  font-style: italic;
+  color: var(--cor-destaque);
+  font-size: 0.9rem;
+  text-align: center;
+  min-height: 1.5rem;
+  padding: 4px;
+  border-top: 1px dashed var(--cor-borda-card);
+  border-bottom: 1px dashed var(--cor-borda-card);
+}
+
+/* Botão do horóscopo */
+.btn-horoscopo {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background-color: var(--cor-marrom);
+  color: var(--cor-papel);
+  border: none;
+  font-family: var(--fonte-corpo);
+  font-size: 0.9rem;
+  transition: background-color 0.25s;
+}
+
+.btn-horoscopo:hover {
+  background-color: var(--cor-destaque);
+}
+
+/* Tabela do calendário agrícola */
+.tabela-agricola {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.tabela-agricola th,
+.tabela-agricola td {
+  border: 1px solid var(--cor-borda-card);
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.tabela-agricola th {
+  background-color: var(--cor-marrom);
+  color: var(--cor-papel);
+  font-family: var(--fonte-titulo);
+}
+
+/* CARDS DE CURIOSIDADES com Efeito hover */
+.curiosidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--espacamento-md);
+}
+
+/* Card de curiosidade — posição relativa para o "flip" */
+.card-curiosidade {
+  cursor: default;
+  min-height: 220px;
+  position: relative;
+  overflow: hidden;
+  padding: 0; /* o padding vai nas divs internas */
+}
+
+/* Frente do card */
+.curiosidade-frente {
+  padding: var(--espacamento-md);
+  text-align: center;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Verso do card (aparece no hover) */
+.curiosidade-verso {
+  position: absolute;
+  inset: 0; /* cobre todo o card */
+  padding: var(--espacamento-md);
+  background-color: var(--cor-marrom);
+  color: var(--cor-papel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.9rem;
+
+  /* Invisível por padrão */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Efeito hover: mostra o verso, esconde a frente */
+.card-curiosidade:hover .curiosidade-verso {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-curiosidade:hover .curiosidade-frente {
+  opacity: 0;
+}
+
+/* Número decorativo grande */
+.curiosidade-numero {
+  display: block;
+  font-family: var(--fonte-decorativa);
+  font-size: 2.5rem;
+  color: var(--cor-borda-card);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.curiosidade-emoji {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-curiosidade .curiosidade-frente h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  color: var(--cor-marrom);
+  margin-bottom: 0.25rem;
+}
+
+.card-curiosidade .curiosidade-frente p {
+  font-size: 0.85rem;
+  color: var(--cor-marrom-claro);
+  font-style: italic;
+}
+
+.curiosidade-verso p {
+  line-height: 1.6;
+}
+
+.curiosidade-verso strong {
+  color: var(--cor-sepia);
+}
+
+/* FOOTER SIMPLES */
+
+.footer {
+  background-color: #3b2a1d;
+  color: #f5ead6;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+  border-top: 3px solid #c8a96e;
+}
+
+.footer p {
+  margin: 8px 0;
+
+  font-size: 0.95rem;
+}
+
+
+/* Responsive (celulares e tablets) */
+
+/* Telas menores que 768px (tablets e celulares) */
+@media (max-width: 768px) {
+
+  /* Stack o card "sobre" em coluna única no celular */
+  .card-sobre {
+    flex-direction: column;
+  }
+
+  /* Imagem ilustrativa fica abaixo do texto */
+  .card-sobre-imagem {
+    justify-content: flex-start;
+  }
+
+  /* Card do horóscopo ocupa apenas 1 coluna */
+  .card-horoscopo {
+    grid-column: span 2;
+  }
+
+  /* Grid de signos: 3 colunas no tablet */
+  .signos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Selo do header fica menor */
+  .header-selo {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
+}
+
+/* Telas muito pequenas (celulares) */
+@media (max-width: 480px) {
+
+  /* Grid de signos: 2 colunas no celular */
+  .signos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Reduz padding das seções */
+  .secao {
+    padding: var(--espacamento-md) 0;
+  }
+
+  .header-principal {
+    padding: var(--espacamento-md) 0;
+  }
+}
